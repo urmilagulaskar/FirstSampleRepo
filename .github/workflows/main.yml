@@ -33,16 +33,18 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-    # Send email
-    - name: Send Notification
-      uses: ./
-      with:
-        server_address: smtp.gmail.com
-        server_port: 465
-        username: ${{ secrets.MY_USERNAME }}
-        password: ${{ secrets.MY_PASS }}
-        subject: Github action job result
-        body: Build job of ${{ github.repository }} Completed successfully
-        to: urmila_gulaskar@persistent.co.in
-        from: Urmila G
-        content_type: text/html
+  email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send email notification
+        uses: ./
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MY_USERNAME }}
+          password: ${{ secrets.MY_PASS }}
+          subject: Github action job result
+          body: Build job of ${{ github.repository }} Completed successfully
+          to: urmila_gulaskar@persistent.co.in
+          from: Urmila G
+          content_type: text/html
