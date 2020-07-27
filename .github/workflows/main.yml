@@ -35,7 +35,7 @@ jobs:
         echo test, and deploy your project.
     # Send email
     - name: Send Notification
-      uses: ./
+#      uses: ./
       with:
         server_address: smtp.gmail.com
         server_port: 465
