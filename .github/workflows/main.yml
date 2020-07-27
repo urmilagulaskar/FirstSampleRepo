@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: send email notification
-        uses: ./
+        uses: actions/checkout@v2
         with:
           server_address: smtp.gmail.com
           server_port: 465
