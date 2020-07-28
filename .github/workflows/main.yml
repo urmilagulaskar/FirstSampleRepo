@@ -47,7 +47,7 @@ jobs:
       if: always()
       id: j1
       run: |
-        cat test.html
+        cat index.html
       
     - name: Job has succeded
       if: success()
