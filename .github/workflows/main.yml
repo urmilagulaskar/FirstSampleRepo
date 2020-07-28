@@ -44,7 +44,7 @@ jobs:
         
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: cat index.html
+      run: cat Index.html
     - name: Job has successeded
       if: success()
       run: echo job has completed
