@@ -53,7 +53,7 @@ jobs:
       if: success()
       run: | 
         echo Job has been completed.
-        echo ${{ GITHUB_SHA }}
+        echo $GITHUB_SHA::8
        
     - name: job has failed
       if: failure()
