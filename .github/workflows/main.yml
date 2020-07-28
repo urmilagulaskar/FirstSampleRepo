@@ -48,13 +48,14 @@ jobs:
       id: j1
       run: |
         cat test.html
+        echo "::set-output name=mix-compile--warnings-as-errors::$(mix compile --warnings-as-errors)\n"
    
     - name: Job has succeded
       if: success()
       run: echo job has been completed
     - name: job has failed
       if: failure()
-      run: echo 'The error is ${{ steps.j1.outputs }}'
+      run: echo 'The error is ${{ steps.j1.outputs.* }}'
 
       
 
