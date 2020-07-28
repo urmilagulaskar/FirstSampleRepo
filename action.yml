@@ -31,6 +31,9 @@ inputs:
     content_type:
         description: 'content type'
         required: false
+    attachments:
+        description: Files that will be added to mail message attachments (separated with comma)
+        required: false
 runs:
     using: 'node12'
     main: 'index.js'
