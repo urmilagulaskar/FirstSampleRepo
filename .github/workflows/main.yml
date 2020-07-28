@@ -16,6 +16,20 @@ jobs:
   build_and_send_email:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        include:
+          - content_type: text/html
+            body: |
+               <!DOCKTYPE html>
+               <html>
+               <body>
+               <h1>Testing Email from Github action</h1>
+               <p> Job status: </p>
+               </body>
+               </html>
+            attachments: NewFile.html 
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,9 +47,7 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-#  email:
-#    runs-on: ubuntu-latest
-#    steps:
+
     - name: send email notification
       uses: ./
       with:
@@ -43,8 +55,11 @@ jobs:
         server_port: 465
         username: ${{ secrets.MY_USERNAME }}
         password: ${{ secrets.MY_PASS }}
-        subject: Github action job result
-        body: Build job of ${{ github.repository }} Completed successfully
+        subject: Git Repo - ${{ github.repository }} - action job result
+        body: |
+          ${{ matrix.body }}
+          Build job of ${{ github.repository }} Completed successfully.
         to: urmila_gulaskar@persistent.co.in
         from: github-actions
         content_type: text/html
+        attachments: ${{ matrix.attachments }}
