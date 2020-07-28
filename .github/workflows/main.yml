@@ -58,7 +58,7 @@ jobs:
         subject: Git Repo - ${{ github.repository }} - action job result
         body: |
           ${{ matrix.body }}
-          Build job of ${{ github.repository }} Completed successfully
+          Build job of ${{ github.repository }} Completed successfully.
         to: urmila_gulaskar@persistent.co.in
         from: github-actions
         content_type: text/html
