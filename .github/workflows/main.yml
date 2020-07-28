@@ -33,9 +33,7 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-#  email:
-#    runs-on: ubuntu-latest
-#    steps:
+
     - name: send email notification
       uses: ./
       with:
@@ -43,7 +41,7 @@ jobs:
         server_port: 465
         username: ${{ secrets.MY_USERNAME }}
         password: ${{ secrets.MY_PASS }}
-        subject: Github action job result
+        subject: Git Repo - ${{ github.repository }} - action job result
         body: Build job of ${{ github.repository }} Completed successfully
         to: urmila_gulaskar@persistent.co.in
         from: github-actions
