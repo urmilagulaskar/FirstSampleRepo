@@ -48,13 +48,12 @@ jobs:
       id: j1
       run: |
         cat test.html
-        
       
     - name: Job has succeded
       if: success()
       run: | 
         echo Job has been completed.
-        echo 'The version of file should be appended with - ${{ GITHUB_SHA::8}}'
+       
     - name: job has failed
       if: failure()
       run: echo 'The error is ${{ steps.j1.outputs.description }}'
