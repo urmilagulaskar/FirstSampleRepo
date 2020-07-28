@@ -36,30 +36,23 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: cat index.html
-      #run: echo Hello, world!
-
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: cat index.html
+    - name: Job has successeded
+      if: success()
+      run: echo job has completed
+    - name: job has failed
+      if: failure()
+      run: echo job has failed
 
-    - name: send email notification
-      uses: ./
-      with:
-        server_address: smtp.gmail.com
-        server_port: 465
-        username: ${{ secrets.MY_USERNAME }}
-        password: ${{ secrets.MY_PASS }}
-        subject: Git Repo - ${{ github.repository }} - action job result
-        body: |
-          ${{ matrix.body }}
-          Build job of ${{ github.repository }} Completed successfully.
-        to: urmila_gulaskar@persistent.co.in
-        from: github-actions
-        content_type: text/html
-        attachments: ${{ matrix.attachments }}
+      
+
+
+
