@@ -44,13 +44,20 @@ jobs:
         
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: cat test.html
+      if: always()
+      id: j1
+      run: |
+        cat test.html
+        echo $staus
+      env:
+        status: ${{ job.status }}
+      
     - name: Job has successeded
       if: success()
-      run: echo job has completed
+      run: echo ${{ steps.j1.status }}
     - name: job has failed
       if: failure()
-      run: echo job has failed
+      run: echo ${{ steps.j1.status }}
 
       
 
