@@ -53,7 +53,7 @@ jobs:
     - name: Job has succeded
       if: success()
       run: | 
-        echo 'Job has been completed.'
+        echo Job has been completed.
         echo 'The version of file should be appended with - ${{ GITHUB_SHA::8}}'
     - name: job has failed
       if: failure()
