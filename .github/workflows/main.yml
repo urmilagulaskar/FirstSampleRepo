@@ -54,7 +54,7 @@ jobs:
       run: echo job has been completed
     - name: job has failed
       if: failure()
-      run: echo ::error file={name},line={line},col={col}::{message}
+      run: echo 'The error is ${{ steps.j1.outputs }}'
 
       
 
