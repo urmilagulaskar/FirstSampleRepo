@@ -59,7 +59,7 @@ jobs:
         body: |
           ${{ matrix.body }}
           Build job of ${{ github.repository }} Completed successfully.
-        to: urmila_gulaskar@persistent.co.in
+        to: urmilag
         from: github-actions
         content_type: text/html
         attachments: ${{ matrix.attachments }}
